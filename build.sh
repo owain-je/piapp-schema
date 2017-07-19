@@ -1,4 +1,4 @@
 #!/bin/bash
-rake 
+rake default
 exit $?
 
