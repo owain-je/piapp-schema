@@ -71,7 +71,7 @@ puts(repo_latest_tag)
 puts(repo_latest_version_tag)
 #tasks
 
-task default: => [:inject_labels,:login,:create_repo,:build,:repository_tag,:push]
+task :default => [:inject_labels,:login,:create_repo,:build,:repository_tag,:push]
 
 task :inject_labels do 
   if(is_automated_build())
