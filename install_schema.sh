@@ -3,6 +3,7 @@
 #PORT=443
 COUNTER=30
 PORTOPEN=false
+env
 
 if [ -z "$PORT" ]; then PORT=3306; fi
 if [ -z "$HOST" ]; then HOST=localhost; fi
