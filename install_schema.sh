@@ -1,7 +1,7 @@
 #!/bin/bash
 #HOSTNAME="google.com"
 #PORT=443
-COUNTER=240
+COUNTER=600
 PORTOPEN=false
 env
 
