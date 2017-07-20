@@ -16,7 +16,7 @@ if [ -z "$TESTDATA" ]; then TESTDATA=false; fi
 echo "Checking HOSTNAME: $HOSTNAME port: $PORT"
 
 until [  $COUNTER -lt 1 ]; do    
-    nc -z $HOSTNAME $PORT
+    nc -z "$HOSTNAME" $PORT
     if [ $? -eq 0 ]; then
    		echo "Discovered port $PORT open"
    		let COUNTER=-1
