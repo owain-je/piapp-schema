@@ -43,8 +43,8 @@ if $PORTOPEN; then
 		mysql -h $FQDN -u $USERNAME -p $PASSWORD --port=$PORT < test_data.sql
    	fi
 else
-   	echo "hostname $FQDN Port $PORT not open in time"
-	exit 1;
+  echo "hostname $FQDN Port $PORT not open in time"
+	exit 1
 fi 
 
-exit 0;
+exit 0
