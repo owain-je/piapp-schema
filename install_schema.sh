@@ -1,7 +1,7 @@
 #!/bin/bash
 #HOST="google.com"
 #PORT=443
-COUNTER=2
+COUNTER=30
 PORTOPEN=false
 
 if [ -z "$PORT" ]; then PORT=3306; fi
