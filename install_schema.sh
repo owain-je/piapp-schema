@@ -24,13 +24,14 @@ echo "Checking FQDN: $FQDN port: $PORT"
  
 
 until [  $COUNTER -lt 1 ]; do    
-    nc -z "$FQDN" $PORT
+    #nc -z "$FQDN" $PORT
     if [ $? -eq 0 ]; then
    		echo "Discovered port $PORT open"
    		let COUNTER=-1
    		PORTOPEN=true
    	else
-   		sleep 1
+   	  echo "exit was : $?"
+    	sleep 1
 	fi
     let COUNTER-=1
 done
