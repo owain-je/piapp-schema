@@ -13,7 +13,7 @@ if [ -z "$USERNAME" ]; then USERNAME=piapp; fi
 if [ -z "$PASSWORD" ]; then PASSWORD=abc2233; fi
 if [ -z "$TESTDATA" ]; then TESTDATA=false; fi
 
-if [ -z "$POD_NAMESPACE"]; then 
+if [ -z "$POD_NAMESPACE" ]; then 
   FQDN="$HOSTNAME"
 else 
   FQDN="$HOSTNAME.$POD_NAMESPACE" 
