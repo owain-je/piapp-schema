@@ -111,8 +111,6 @@ end
 
 task :build do
    puts("Building #{base_tag}")
-   execute_cmd("dotnet restore")
-   execute_cmd("dotnet publish -c Release -o out")
    execute_cmd("docker build -t #{base_tag} .")
 end
 
