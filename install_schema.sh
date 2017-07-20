@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mysql -u $USERNAME -p $PASSWORD < schema.sql
+mysql -h $HOST-u $USERNAME -p $PASSWORD < schema.sql
