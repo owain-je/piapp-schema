@@ -1,7 +1,7 @@
 #!/bin/bash
 #HOSTNAME="google.com"
 #PORT=443
-COUNTER=1600
+COUNTER=1200
 PORTOPEN=false
 env
 
@@ -25,7 +25,7 @@ echo "Checking FQDN: $FQDN port: $PORT"
 
 until [  $COUNTER -lt 1 ]; do    
     #nc -z "$FQDN" $PORT
-    
+       ping $FQDN 
     #if [ $? -eq 0 ]; then
 #   		echo "Discovered port $PORT open"
 #   		let COUNTER=-1
