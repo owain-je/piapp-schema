@@ -1,4 +1,5 @@
 #!/bin/bash
-rake default
+echo "hello"
+rake -f Rakefile default
 exit $?
 
