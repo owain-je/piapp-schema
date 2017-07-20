@@ -5,18 +5,21 @@ COUNTER=240
 PORTOPEN=false
 env
 
-echo "Checking   HOSTNAME: $HOSTNAME port: $PORT"
+echo "Checking HOSTNAME: $HOSTNAME port: $PORT"
 
 if [ -z "$PORT" ]; then PORT=3306; fi
 if [ -z "$HOSTNAME" ]; then HOSTNAME=localhost; fi
 if [ -z "$USERNAME" ]; then USERNAME=piapp; fi
 if [ -z "$PASSWORD" ]; then PASSWORD=abc2233; fi
 if [ -z "$TESTDATA" ]; then TESTDATA=false; fi
+if [ -z "$POD_NAMESPACE"]; then FQDN="$HOSTNAME"; else FQDN="$HOSTNAME.$POD_NAMESPACE" fi
 
-echo "Checking HOSTNAME: $HOSTNAME port: $PORT"
+echo "Checking FQDN: $FQDN port: $PORT"
+
+ 
 
 until [  $COUNTER -lt 1 ]; do    
-    nc -z "$HOSTNAME" $PORT
+    nc -z "$FQDN" $PORT
     if [ $? -eq 0 ]; then
    		echo "Discovered port $PORT open"
    		let COUNTER=-1
@@ -29,13 +32,13 @@ done
 
 #check the port is open 
 if $PORTOPEN; then
-   	echo "hostname: $HOSTNAME Port $PORT is open"
-   	mysql -h $HOSTNAME-u $USERNAME -p $PASSWORD --port=$PORT < schema.sql
+   	echo "hostname: $FQDN Port $PORT is open"
+   	mysql -h $FQDN -u $USERNAME -p $PASSWORD --port=$PORT < schema.sql
    	if $TESTDATA; then
-		mysql -h $HOSTNAME-u $USERNAME -p $PASSWORD --port=$PORT < test_data.sql
+		mysql -h $FQDN -u $USERNAME -p $PASSWORD --port=$PORT < test_data.sql
    	fi
 else
-   	echo "hostname $HOSTNAME Port $PORT not open in time"
+   	echo "hostname $FQDN Port $PORT not open in time"
 	exit 1;
 fi 
 
