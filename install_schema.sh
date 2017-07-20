@@ -23,7 +23,7 @@ echo "Checking FQDN: $FQDN port: $PORT"
 
  
 
-#until [  $COUNTER -lt 1 ]; do    
+until [  $COUNTER -lt 1 ]; do    
     #nc -z "$FQDN" $PORT
     
     #if [ $? -eq 0 ]; then
@@ -32,10 +32,10 @@ echo "Checking FQDN: $FQDN port: $PORT"
    		PORTOPEN=true
    #	else
    #	  echo "exit was : $?"
-   # 	sleep 1
+    	sleep 1
 #	fi
- #   let COUNTER-=1
-#done
+    let COUNTER-=1
+done
 
 #check the port is open 
 if $PORTOPEN; then
