@@ -8,6 +8,7 @@ if [ -z "$PORT" ]; then PORT=3306; fi
 if [ -z "$HOST" ]; then HOST=localhost; fi
 if [ -z "$USERNAME" ]; then USERNAME=piapp; fi
 if [ -z "$PASSWORD" ]; then PASSWORD=abc2233; fi
+if [ -z "$TESTDATA" ]; then TESTDATA=false; fi
 
 echo "Checking host: $HOST port: $PORT"
 
@@ -27,6 +28,9 @@ done
 if $PORTOPEN; then
    	echo "$HOST Port $PORT  is open"
    	mysql -h $HOST-u $USERNAME -p $PASSWORD --port=$PORT < schema.sql
+   	if $TESTDATA; then
+		mysql -h $HOST-u $USERNAME -p $PASSWORD --port=$PORT < test_data.sql
+   	fi
 else
    	echo "$HOST Port $PORT not open in time"
 	exit 1;
