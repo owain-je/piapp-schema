@@ -40,9 +40,9 @@ echo "Checking FQDN: $FQDN port: $PORT"
 #check the port is open 
 if $PORTOPEN; then
    	echo "hostname: $FQDN Port $PORT is open"
-   	mysql -h $FQDN -u "$USERNAME" -p$PASSWORD --port $PORT piapp < schema.sql
+   	mysql --host=$FQDN --username="$USERNAME" --password="$PASSWORD" --port="$PORT" < schema.sql
    	if $TESTDATA; then
-		mysql -h $FQDN -u "$USERNAME" -p$PASSWORD --port $PORT piapp < test_data.sql
+		#mysql -host=$FQDN --username="$USERNAME" -p$PASSWORD --port="$PORT" < test_data.sql
    	fi
 else
   echo "hostname $FQDN Port $PORT not open in time"
