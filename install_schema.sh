@@ -8,7 +8,9 @@ echo "Checking MYSQL_HOSTNAME: $MYSQL_HOSTNAME port: $PORT"
 if [ -z "$MYSQL_PORT" ]; then MYSQL_PORT=3306; fi
 if [ -z "$MYSQL_HOSTNAME" ]; then MYSQL_HOSTNAME=localhost; fi
 if [ -z "$MYSQL_USERNAME" ]; then USERNAME=root; fi
-if [ -z "$MYSQL_ROOT_PASSWORD" ]; then MYSQL_ROOT_PASSWORD=abc2233; fi
+if [ -z "$MYSQL_PASSWORD
+MYSQL_HOSTNAME" ]; then MYSQL_PASSWORD
+MYSQL_HOSTNAME=abc2233; fi
 if [ -z "$TESTDATA" ]; then TESTDATA=false; fi
 
 if [ -z "$POD_NAMESPACE" ]; then 
@@ -36,10 +38,12 @@ echo "Checking FQDN: $FQDN port: $PORT"
 #check the port is open 
 if $PORTOPEN; then
    	echo "MYSQL_HOSTNAME: $FQDN Port $MYSQL_PORT is open"
-   	mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_ROOT_PASSWORD" < schema.sql
+   	mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD
+MYSQL_HOSTNAME" < schema.sql
     echo "success running schema $?"
    	if $TESTDATA; then
-		    mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_ROOT_PASSWORD"  < test_data.sql
+		    mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD
+MYSQL_HOSTNAME"  < test_data.sql
         echo "success adding test data $?"
    	fi
 else
