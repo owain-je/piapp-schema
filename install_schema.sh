@@ -38,12 +38,12 @@ echo "Checking FQDN: $FQDN port: $PORT"
 #check the port is open 
 if $PORTOPEN; then
    	echo "MYSQL_HOSTNAME: $FQDN Port $MYSQL_PORT is open"
-   	mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD
-MYSQL_HOSTNAME" < schema.sql
+   	echo "Running: mysql -h $FQDN -u\"$MYSQL_USERNAME\" --password=\"*****\" --database=$MYSQL_DATABASE < schema.sql"
+    mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD" --database="$MYSQL_DATABASE" < schema.sql
     echo "success running schema $?"
    	if $TESTDATA; then
-		    mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD
-MYSQL_HOSTNAME"  < test_data.sql
+      echo "running:  mysql -h $FQDN -u\"$MYSQL_USERNAME\" --password=\"*****\" --database=\"$MYSQL_DATABASE\" < test_data.sql"
+		    mysql -h $FQDN -u"$MYSQL_USERNAME" --password="$MYSQL_PASSWORD" --database="$MYSQL_DATABASE" < test_data.sql
         echo "success adding test data $?"
    	fi
 else
