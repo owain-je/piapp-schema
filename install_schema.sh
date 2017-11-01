@@ -47,4 +47,8 @@ else
 	exit 1
 fi 
 
+if $DEBUG; then 
+  sleep 240
+fi 
+
 exit 0
