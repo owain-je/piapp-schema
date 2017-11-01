@@ -7,7 +7,7 @@ echo "Checking MYSQL_HOSTNAME: $MYSQL_HOSTNAME port: $PORT"
 
 if [ -z "$MYSQL_PORT" ]; then MYSQL_PORT=3306; fi
 if [ -z "$MYSQL_HOSTNAME" ]; then MYSQL_HOSTNAME=localhost; fi
-if [ -z "$MYSQL_USERNAME" ]; then USERNAME=root; fi
+if [ -z "$MYSQL_USERNAME" ]; then MYSQL_USERNAME=root; fi
 if [ -z "$MYSQL_PASSWORD
 MYSQL_HOSTNAME" ]; then MYSQL_PASSWORD
 MYSQL_HOSTNAME=abc2233; fi
@@ -21,19 +21,19 @@ fi
 
 echo "Checking FQDN: $FQDN port: $PORT"
 
-#until [  $COUNTER -lt 1 ]; do    
-    #nc -z "$FQDN" $MYSQL_PORT
-    #   ping $FQDN 
-    #if [ $? -eq 0 ]; then
-#   		echo "Discovered port $MYSQL_PORT open"
-#   		let COUNTER=-1
+until [  $COUNTER -lt 1 ]; do    
+  nc -z "$FQDN" $MYSQL_PORT
+  #   ping $FQDN 
+  if [ $? -eq 0 ]; then
+   		echo "Discovered port $MYSQL_PORT open"
+   		let COUNTER=-1
    		PORTOPEN=true
-   #	else
-   #	  echo "exit was : $?"
-#    	sleep 1
-#	fi
-#    let COUNTER-=1
-#done
+	else
+	  echo "exit was : $?"
+    	sleep 1
+	fi
+    let COUNTER-=1
+done
 
 #check the port is open 
 if $PORTOPEN; then
