@@ -82,7 +82,7 @@ task :inject_labels do
                     build-pipeline_version=\"#{version}\" \\   
                     build-date=\"#{Time.now.getutc}\" \\
                     build-name=\"#{container_name}\" \\
-                    vendor=\"onzo.com\" \\
+                    vendor=\"example.com\" \\
                     license=\"restricted\"                       
                   "
     File.open("Dockerfile", "w+") do |f|
